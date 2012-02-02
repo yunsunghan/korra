@@ -1,0 +1,22 @@
+https://www.google.com/enterprise/marketplace/search?categoryId=6&orderBy=rating 구글 product 페이지를 주로 참조 한다.
+
+1) http://www.zoho.com/projects
+  - 잘 알려젼 소셜 솔루션 업체
+   
+2) http://www.rapidtask.com
+   - 무료체험 솔루션
+   
+3) https://manymoon.com/?utm_source=google&utm_medium=store&utm_campaign=gam_listing
+   - 잘 알려진 구글 협력 솔루션 업체
+   
+4) https://www.mavenlink.com/
+   - 잘 알려진 구글 협력 sns 솔루션 업체
+    
+5) http://insight.ly/
+   - 신상
+6) http://teambox.com/
+   - 홍보 동영상 활용도가 높다.
+   - UX가 좋다.
+   - simple하고, 효과적이다.
+   - role 모델
+   

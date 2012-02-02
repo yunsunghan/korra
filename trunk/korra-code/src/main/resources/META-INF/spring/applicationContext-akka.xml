@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:jee="http://www.springframework.org/schema/jee" 
+		xmlns:tx="http://www.springframework.org/schema/tx" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr" 
+		xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
+		xmlns:task="http://www.springframework.org/schema/task" 
+		xmlns:akka="http://akka.io/schema/akka"
+		xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+ 				http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+ 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+ 				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd  
+ 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+ 				http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd  
+ 				http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd  
+ 				http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd 
+ 				http://akka.io/schema/akka http://akka.io/akka-1.0.xsd"> 
+
+    <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
+     				
+    <!-- =========================================================== -->
+    <!-- =======================  	akka	======================== -->
+    <!-- =========================================================== -->
+
+<!--      아래코드로 직접 주입하라. -->
+<!--     CollectActor actor = TypedActor.newInstance(CollectActor.class,CollectActorImpl.class); -->
+<!-- 	<akka:supervision id="googleSupervisor"> -->
+<!-- 		<akka:restart-strategy failover="AllForOne" retries="3" timerange="5000"> -->
+<!-- 			<akka:trap-exits> -->
+<!-- 				<akka:trap-exit>java.io.IOException</akka:trap-exit> -->
+<!-- 			</akka:trap-exits> -->
+<!-- 		</akka:restart-strategy> -->
+<!-- 		<akka:typed-actors>    -->
+     			<akka:typed-actor 
+							  id="collectActor"
+							  interface="com.ks.code.collector.akka.CollectActor"
+							  implementation="com.ks.code.collector.akka.CollectActorImpl"
+							  timeout="5000" scope="prototype" />
+<!-- 				<property name="timeAgentLogService" ref="timeAgentLogService"/> -->
+<!-- 				<property name="timeAreaLogService" ref="timeAreaLogService"/> -->
+<!-- 				<property name="timeLanguageLogService" ref="timeLanguageLogService"/> -->
+<!-- 			</akka:typed-actor> -->
+<!-- 		</akka:typed-actors> -->
+<!--  	</akka:supervision>		      -->	    
+</beans>
