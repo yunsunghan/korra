@@ -1,0 +1,34 @@
+<decorators defaultdir="/WEB-INF/layouts">
+	<excludes>
+		<pattern>/scripts/*</pattern>
+		<pattern>/images/*</pattern>
+		<pattern>/styles/*</pattern>
+		<pattern>/resources/*</pattern>
+		<pattern>/static/*</pattern>
+		<pattern>/remote/*</pattern>
+		<pattern>/rest/*</pattern>
+	</excludes>
+    
+<!-- backoffice -->    
+    <decorator name="backoffice_none" page="backoffice_none.jsp">
+	    <pattern>/backoffice_login*</pattern>
+    </decorator>
+    <decorator name="backoffice_popup" page="backoffice_popup.jsp">
+	    <pattern>/backoffice/*.popup</pattern>
+    </decorator>
+    <decorator name="backoffice" page="backoffice.jsp">
+	    <pattern>/backoffice/*</pattern>
+    </decorator>
+    
+<!-- front -->    
+    <decorator name="front_none" page="front_none.jsp">
+	    <pattern>/userlogin*</pattern>
+    </decorator>
+    <decorator name="front_popup" page="front_popup.jsp">
+	    <pattern>/*.popup</pattern>
+    </decorator>
+    <decorator name="front" page="front.jsp">
+	    <pattern>/*</pattern>
+    </decorator>
+
+</decorators>

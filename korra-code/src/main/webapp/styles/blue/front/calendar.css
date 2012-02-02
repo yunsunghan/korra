@@ -1,0 +1,168 @@
+@charset "utf-8";
+.calendar{position:absolute;top:10px;left:10px;width:190px;height:196px;background-color:#f0f4f7;border:solid 1px #cad6e2;padding:8px;}
+.calendar .controller{position:relative;text-align:center;color:#525f82;font-weight:bold;border-bottom:dotted 1px #dde5ec;margin-bottom:6px;padding:4px;}
+.calendar .controller a.close{position:absolute;top:6px;right:-10px;_top:2px;_right:0px;_height:22px;}
+.calendar .area{border:solid 2px #cad6e2;padding:4px;background-color:#fff;}
+.calendar table{background-color:#fff;margin:0;padding:0;border:none;width:100%;font-size:11px;}
+.calendar table td,
+.calendar table th{padding:4px 6px;}
+.calendar .area table th{background-color:#f2f2f2;border:none;color:#000;font-weight:normal;}
+.calendar .area table .red{color:#ef6d39;}
+.calendar .area table .blue{color:#1d4681;}
+
+
+#calendarDiv .area{border:solid 2px #cad6e2;padding:4px;background-color:#fff; margin-bottom:20px;}
+#calendarDiv table { background-color:#fff;margin:0;padding:0;border:none;width:100%;}
+#calendarDiv table td,
+#calendarDiv table th{ padding:4px 6px; font-size:11px;font-family:"돋움", Dotum, arial, verdana;}
+#calendarDiv .area table th{background-color:#f2f2f2;border:none;color:#000;font-weight:normal;}
+ #calendarDiv table td { border-bottom: #ececec 1px solid }
+ #calendarDiv table td.none{ border-bottom: #fff 1px solid }
+#calendarDiv .red{color:#ef6d39;}
+#calendarDiv .blue{color:#1d4681;}
+
+#calendarDiv .calendar_week_row { padding:4px 6px;background-color:#f2f2f2;border:none;color:#000;font-size:11px;font-weight:normal;}
+#calendarDiv .calendar_week_column {padding:4px 6px; border-bottom: 1px solid red;}
+
+
+#calendar_month_txt {text-align:center;color:#525f82;font-weight:bold;}
+#calendar_year_txt {text-align:center;color:#525f82;font-weight:bold;}
+#calendarDiv
+{
+	position:absolute;
+	width:190px;
+	background-color:#f0f4f7;
+	border:solid 1px #cad6e2;
+	padding:8px;
+	font-size:11px;
+	color:#808183;
+}
+#calendarDiv span,#calendarDiv img{
+	float:left;
+}
+#calendarDiv .selectBox,#calendarDiv .selectBoxOver{
+
+	line-height:12px;
+	padding:1px;
+	cursor:pointer;
+	padding-left:2px;
+}
+
+#calendarDiv .selectBoxTime,#calendarDiv .selectBoxTimeOver{
+	line-height:12px;
+	padding:1px;
+	cursor:pointer;
+	padding-left:2px;
+}
+
+#calendarDiv td{
+	padding:3px;
+	margin:0px;
+	font-size:10px;
+}
+
+
+
+#calendarDiv .selectBox{
+	border:1px solid #E2EBED;
+	color: #317082;
+	position:relative;
+}
+#calendarDiv .selectBoxOver{
+	border:1px solid #FFF;
+
+	color: #317082;
+	position:relative;
+}
+#calendarDiv .selectBoxTime{
+	border:1px solid #317082;
+	color: #317082;
+	position:relative;
+}
+#calendarDiv .selectBoxTimeOver{
+	border:1px solid #216072;
+	color: #216072;
+	position:relative;
+}
+
+#calendarDiv .topBar{
+	height:16px;
+	padding:2px;
+}
+#calendarDiv .activeDay{	/* Active day in the calendar */
+	color:#FF0000;
+}
+#calendarDiv .todaysDate{
+	height:17px;
+	line-height:17px;
+	padding:2px;
+	/*background-color: #E2EBED;*/
+	text-align:center;
+	position:absolute;
+	bottom:0px;
+	width:188px;
+	margin-bottom:3px;
+}
+#calendarDiv .todaysDate div{
+	float:left;
+}
+
+#calendarDiv .timeBar{
+	height:17px;
+	line-height:17px;
+	background-color: #E2EBED;
+	width:72px;
+	color:#FFF;
+	position:absolute;
+	right:0px;
+}
+
+#calendarDiv .timeBar div{
+	float:left;
+	margin-right:1px;
+}
+
+
+#calendarDiv .monthYearPicker
+{
+	background-color: #f0f4f7;
+	border:1px solid #AAAAAA;
+	position:absolute;
+	color: #317082;
+	left:0px;
+	top:15px;
+	z-index:1000;
+	display:none;
+
+}
+#calendarDiv #monthSelect{
+	width:70px;
+}
+#calendarDiv .monthYearPicker div
+{
+	width:53px;
+	float:left;
+	clear:both;
+	padding:1px;
+	margin:1px;
+	cursor:pointer;
+	text-align:left;
+}
+#calendarDiv .monthYearActive{
+	background-color:#317082;
+	color: #E2EBED;
+}
+
+#calendarDiv td{
+	text-align:right;
+	cursor:pointer;
+}
+
+#calendarDiv .topBar img{
+	cursor:pointer;
+}
+#calendarDiv .topBar div{
+	float:left;
+	margin-right:1px;
+
+}

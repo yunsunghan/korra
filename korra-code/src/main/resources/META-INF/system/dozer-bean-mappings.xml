@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+<!-- 구글 mail  -->
+  <mapping map-id="net.max.wp.google.ws.dto.WpMail"> 
+    <class-a>net.max.core.google.gdata.client.service.Gmail</class-a>
+    <class-b>net.max.wp.google.ws.dto.WpMail</class-b>   
+    <field>
+      <a>title</a>
+      <b>title</b>
+    </field>
+    <field >
+      <a>link</a>
+      <b>link</b>
+    </field>
+    <field>
+      <a>issued</a>
+      <b>date</b>
+    </field>
+  </mapping>  
+       
+<!-- 구글 Calendar -->
+  <mapping map-id="net.max.wp.google.ws.dto.WpCalendar"> 
+    <class-a>com.google.gdata.data.calendar.CalendarEventEntry</class-a>
+    <class-b>net.max.wp.google.ws.dto.WpCalendar</class-b>   
+    <field custom-converter="net.max.wp.google.ws.dto.converter.TextConstructConverter">
+      <a>title</a>
+      <b>title</b>
+    </field>
+    <field custom-converter="net.max.wp.google.ws.dto.converter.LinkConverter">
+      <a>htmlLink</a>
+      <b>link</b>
+    </field>
+    <field custom-converter="net.max.wp.google.ws.dto.converter.TimesConverter">
+      <a>Times</a>
+      <b>date</b>
+    </field>
+  </mapping>   
+        
+<!-- 구글 Docs -->
+  <mapping map-id="net.max.wp.google.ws.dto.WpDocs"> 
+    <class-a>com.google.gdata.data.docs.DocumentListEntry</class-a>
+    <class-b>net.max.wp.google.ws.dto.WpDocs</class-b>   
+    <field custom-converter="net.max.wp.google.ws.dto.converter.TextConstructConverter">
+      <a>title</a>
+      <b>title</b>
+    </field>
+    <field custom-converter="net.max.wp.google.ws.dto.converter.LinkConverter">
+      <a>htmlLink</a>
+      <b>link</b>
+    </field>
+    <field custom-converter="net.max.wp.google.ws.dto.converter.DateTimeConverter">
+      <a>updated</a>
+      <b>date</b>
+    </field>
+  </mapping>         
+</mappings>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:aop="http://www.springframework.org/schema/aop" 
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:jee="http://www.springframework.org/schema/jee" 
+		xmlns:tx="http://www.springframework.org/schema/tx" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr" 
+		xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
+		xmlns:task="http://www.springframework.org/schema/task" 
+		xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
+ 				http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+ 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+ 				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd  
+ 				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+ 				http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd  
+ 				http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd  
+ 				http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd "> 
+ 				
+    <context:property-placeholder location="classpath*:META-INF/spring/*.properties"/>
+    <context:spring-configured/>
+    <context:component-scan base-package="com.ks.code">
+        <context:exclude-filter expression=".*_Roo_.*" type="regex"/>
+        <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+    </context:component-scan>
+    
+    <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource" >
+        <property name="driverClassName" value="${database.driverClassName}"/>
+        <property name="url" value="${database.url}"/>
+        <property name="username" value="${database.username}"/>
+        <property name="password" value="${database.password}"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="true"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="timeBetweenEvictionRunsMillis" value="1800000"/>
+        <property name="numTestsPerEvictionRun" value="3"/>
+        <property name="minEvictableIdleTimeMillis" value="1800000"/>
+        <property name="validationQuery" value="SELECT 1"/>
+		<!-- http://community.jboss.org/wiki/HowToConfigureTheC3P0ConnectionPool -->
+        <property name="initialSize" value="10"/>
+        <property name="minIdle" value="10"/>
+        <property name="maxActive" value="60"/>
+        <property name="maxIdle" value="60"/>
+        <property name="maxWait" value="60"/>
+    </bean>
+    <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+    <tx:annotation-driven mode="aspectj" transaction-manager="transactionManager"/>
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="entityManagerFactory">
+        <property name="persistenceUnitName" value="persistenceUnit"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!-- =========================================================== -->
+    <!-- =======================  Core A/F  ======================== -->
+    <!-- =========================================================== -->
+	<bean class="com.korrasoft.framework.core.web.paging.impl.DefaultPagingByImage" name="paging">
+	    <property name="defaultUrl" ref="defaultUrl"/>
+	</bean>    
+	<bean class="java.lang.String" name="defaultUrl">
+		<constructor-arg>
+			<value>${korra.host}</value>
+		</constructor-arg>
+	</bean>
+   <!-- =========================================================== -->
+    <!-- =======================  ZXing 	======================== -->
+    <!-- =========================================================== -->
+<!--     KorraMultiFormatWriter -->
+
+    <!-- =========================================================== -->
+    <!-- =======================     DWR    ======================== -->
+    <!-- =========================================================== -->
+<!-- 	<dwr:annotation-scan base-package="com.ks.code" scanDataTransferObject="true" scanRemoteProxy="true"/> -->
+<!-- 	<dwr:configuration/>  -->
+	
+    <!-- =========================================================== -->
+    <!-- =======================	cache   ======================== -->
+    <!-- =========================================================== -->
+	<ehcache:annotation-driven/>
+		<ehcache:config cache-manager="cacheManager">
+	</ehcache:config>
+    <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" id="cacheManager">
+    	<property name="configLocation" value="classpath:META-INF/system/ehcache.xml"/>
+    </bean>	  
+    <!-- =========================================================== -->
+    <!-- =======================   Dozer    ======================== -->
+    <!-- =========================================================== -->
+<!-- 	<bean class="org.dozer.DozerBeanMapper" id="dozerMapper"> -->
+<!-- 	    <property name="mappingFiles"> -->
+<!-- 	        <list> -->
+<!-- 	            <value>META-INF/system/dozer-bean-mappings.xml</value> -->
+<!-- 	        </list> -->
+<!-- 	    </property> -->
+<!-- 	</bean>     -->
+    <!-- =========================================================== -->
+    <!-- =======================  	Task	======================== -->
+    <!-- =========================================================== -->
+	<task:scheduler id="taskScheduler"/>
+	<task:executor id="taskExecutor" pool-size="10"/>
+	<task:annotation-driven executor="taskExecutor" scheduler="taskScheduler"/>		    
+</beans>
